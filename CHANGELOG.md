@@ -23,6 +23,7 @@
 ### Chore
 
  - [#1693](https://github.com/poanetwork/blockscout/pull/1693) - Add a checklist to the PR template
+ - [#1718](https://github.com/poanetwork/blockscout/pull/1718) - Flatten indexer module hierarchy and supervisor tree
 
 
 ## 1.3.8-beta
