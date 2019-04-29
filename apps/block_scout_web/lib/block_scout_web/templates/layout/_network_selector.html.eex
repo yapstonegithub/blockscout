@@ -1,0 +1,43 @@
+<div class="network-selector-overlay">
+    <div class="network-selector">
+        <div class="network-selector-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13">
+                <path fill-rule="evenodd" d="M7.881 6.5l4.834 4.834a.977.977 0 0 1-1.381 1.381L6.5 7.881l-4.834 4.834a.977.977 0 0 1-1.381-1.381L5.119 6.5.285 1.666A.977.977 0 0 1 1.666.285L6.5 5.119 11.334.285a.977.977 0 0 1 1.381 1.381L7.881 6.5z"/>
+            </svg>
+        </div>
+        <div class="network-selector-text-container">
+            <h1 class="network-selector-title"><%= gettext("Change Network") %></h1>
+            <p class="network-selector-text"><%= gettext("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.") %></p>
+        </div>
+        <div class="network-selector-search-container">
+            search
+        </div>
+        <div class="network-selector-tabs-container">
+            tabs
+        </div>
+        <div class="network-selector-networks-container">
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+            <div>network</div>
+        </div>
+        <div class="network-selector-load-more-container">
+            <button class="btn btn-line"><%= gettext("Show More Networks") %></button>
+        </div>
+    </div>
+</div>
