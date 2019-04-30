@@ -5,6 +5,7 @@ $btn-network-selector-load-more-background: #fff !default;
 $btn-network-selector-load-more-color: $primary !default;
 $network-selector-search-input-color: #a3a9b5 !default;
 $network-selector-tab-active-border-color: $primary !default;
+$network-selector-item-icon-dimensions: 30px !default;
 
 .network-selector-overlay {
   background-color: rgba($network-selector-overlay-background, 0.9);
@@ -55,7 +56,7 @@ $network-selector-tab-active-border-color: $primary !default;
   font-size: 18px;
   font-weight: normal;
   line-height: 1.2;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
   padding: 0;
 }
 
@@ -185,8 +186,6 @@ $network-selector-tab-active-border-color: $primary !default;
   padding: 20px 20px 20px 0;
 }
 
-$network-selector-item-icon-dimensions: 30px;
-
 .network-selector-item-icon {
   background-color: #dfdfdf;
   border-radius: 50%;
@@ -209,9 +208,21 @@ $network-selector-item-icon-dimensions: 30px;
   white-space: nowrap;
 }
 
+.network-selector-item-type {
+  color: #a3a9b5;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2;
+  padding-left: 10px;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .network-selector-item-content {
   align-items: center;
   display: flex;
+  flex-grow: 1;
 }
 
 .network-selector-networks-container {

@@ -24,17 +24,17 @@
         <div class="network-selector-networks-container">
             <div class="network-selector-tab-content active" network-selector-tab="all">
                 <%= for %{url: url, title: title} <- other_networks() do %>
-                    <%= render BlockScoutWeb.LayoutView, "_network_selector_item.html", title: title, url: url %>
+                    <%= render BlockScoutWeb.LayoutView, "_network_selector_item.html", title: title, url: url, tab_type: "Mainnet" %>
                 <% end %>
             </div>
             <div class="network-selector-tab-content" network-selector-tab="mainnet">
                 <%= for %{url: url, title: title} <- main_nets() do %>
-                    <%= title %>
+                    <%= render BlockScoutWeb.LayoutView, "_network_selector_item.html", title: title, url: url, tab_type: assigns[:tab_type] %>
                 <% end %>
             </div>
             <div class="network-selector-tab-content" network-selector-tab="testnet">
                 <%= for %{url: url, title: title} <- test_nets() do %>
-                    <%= title %>
+                    <%= render BlockScoutWeb.LayoutView, "_network_selector_item.html", title: title, url: url, tab_type: assigns[:tab_type] %>
                 <% end %>
             </div>
             <div class="network-selector-tab-content" network-selector-tab="favorites">

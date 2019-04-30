@@ -9,6 +9,11 @@
             <span class="network-selector-item-title">
                 <%= @title %>
             </span>
+            <%= if @tab_type do %>
+            <span class="network-selector-item-type">
+                <%= @tab_type %>
+            </span>
+            <% end %>
         </span>
     </label>
     <label class="network-selector-item-favorite">
