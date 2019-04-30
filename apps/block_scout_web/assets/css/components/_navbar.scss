@@ -129,16 +129,16 @@ $navbar-logo-width: auto !default;
       text-overflow: ellipsis !important;
     }
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        text-overflow: ellipsis  !important;
+      text-overflow: ellipsis  !important;
     }
     &::-moz-placeholder { /* Firefox 19+ */
-        text-overflow: ellipsis  !important;
+      text-overflow: ellipsis  !important;
     }
     &:-ms-input-placeholder { /* IE 10+ */
-        text-overflow: ellipsis  !important;
+      text-overflow: ellipsis  !important;
     }
     &:-moz-placeholder { /* Firefox 18- */
-        text-overflow: ellipsis  !important;
+      text-overflow: ellipsis  !important;
     }
 
     &:focus {
