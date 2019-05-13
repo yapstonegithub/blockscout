@@ -1,12 +1,15 @@
 defmodule BlockScoutWeb.ValidatorsController do
   use BlockScoutWeb, :controller
 
-  def index(conn, params) do
-    []
-    |> handle_render(conn, params)
-  end
+  alias Explorer.Counters.AverageBlockTime
+  alias Explorer.Chain
 
-  defp handle_render(_full_options, conn, _params) do
-    render(conn, "index.html")
+  def index(conn, params) do
+    lim = params["lim"] || 20
+    off = params["off"] || 0
+
+    validators = Chain.staking_pools(:validator, lim, off)
+    average_block_time = AverageBlockTime.average_block_time()
+    render(conn, "index.html", validators: validators, average_block_time: average_block_time)
   end
 end

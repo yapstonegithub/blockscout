@@ -6,8 +6,9 @@ $(function () {
     $('#becomeCandidateModal').modal()
   })
 
-  $('.js-validator-info-modal').on('click', function () {
-    $('#validatorInfoModal').modal()
+  $('.js-validator-info-modal').on('click', function (e) {
+    var id = e.target.id.split("_")[1];
+    $('#validatorInfoModal' + id).modal()
   })
 
   $('.js-move-stake').on('click', function () {
