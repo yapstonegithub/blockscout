@@ -1,12 +1,19 @@
 defmodule BlockScoutWeb.InactivePoolsController do
   use BlockScoutWeb, :controller
 
-  def index(conn, params) do
-    []
-    |> handle_render(conn, params)
-  end
+  alias Explorer.Counters.AverageBlockTime
+  alias Explorer.Chain
+  alias Explorer.PagingOptions
 
-  defp handle_render(_full_options, conn, _params) do
-    render(conn, "index.html")
+  def index(conn, params) do
+    paging_options =
+      %PagingOptions{
+        page_size: params["lim"] || 20,
+        page_number: params["off"] || 1
+      }
+
+    pools = Chain.staking_pools(:inactive, paging_options)
+    average_block_time = AverageBlockTime.average_block_time()
+    render(conn, "index.html", pools: pools, average_block_time: average_block_time)
   end
 end

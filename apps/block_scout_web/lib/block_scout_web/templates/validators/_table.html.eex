@@ -39,7 +39,7 @@
                             progress: amount_ratio(metadata)
                         %>
                     </td>
-                    <td class="stakes-td">2.56%</td>
+                    <td class="stakes-td"><%= metadata["staked_ratio"] %></td>
                     <td class="stakes-td"><span class="stakes-td-link-style"><%= metadata["delegators_count"] %></span></td>
                     <%= if metadata["is_banned"] do %>
                     <td class="stakes-td">
@@ -58,7 +58,7 @@
                     <% end %>
                 </tr>
                 <%= render BlockScoutWeb.StakesView, "_stakes_modal_validator_info.html", validator: validator, index: index, average_block_time: @average_block_time %>
-            <% end %>
+                <% end %>
             <% end %>
         </tbody>
     </table>

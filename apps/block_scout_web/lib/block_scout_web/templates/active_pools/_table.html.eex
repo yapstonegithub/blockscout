@@ -11,41 +11,59 @@
             </tr>
         </thead>
         <tbody>
-            <%= for i <- 1..20 do %>
-            <tr>
-                <td class="stakes-td"><div class="stakes-td-order"><%= i %></div></td>
-                <td class="stakes-td">
-                    <%=
-                        render BlockScoutWeb.StakesView,
-                        "_stakes_address.html",
-                        address: "0x59D8-d6Fc43",
-                        tooltip: "This is a validator"
-                    %>
-                </td>
-                <td class="stakes-td">
-                    <%=
-                        render BlockScoutWeb.CommonComponentsView,
-                        "_progress_from_to.html",
-                        from: 500,
-                        to: 15000,
-                        progress: 40
-                    %>
-                </td>
-                <td class="stakes-td">2.56%</td>
-                <td class="stakes-td"><span class="stakes-td-link-style">1455</span></td>
-                <td class="stakes-td">
-                    <div class="stakes-controls">
-                        <%= render BlockScoutWeb.StakesView, "_stakes_control_move.html", extra_class: "js-move-stake" %>
-                        <%= render BlockScoutWeb.StakesView, "_stakes_control_withdraw.html", extra_class: "js-withdraw-stake" %>
-                        <%= render BlockScoutWeb.StakesView, "_stakes_control_stake.html", extra_class: "js-stake-stake" %>
-                    </div>
-                </td>
-            </tr>
+            <%= if Enum.count(@pools) == 0 do %>
+                <tr>
+                    <td colspan="6">
+                        <%= render BlockScoutWeb.StakesView, "_stakes_empty_content.html" %>
+                    </td>
+                </tr>
+            <% else %>
+                <%= for {%{metadata: metadata} = pool, index} <- Enum.with_index(@pools, 1) do %>
+                <tr class=<%= if metadata["is_banned"], do:  "stakes-tr-banned" %>>
+                    <td class="stakes-td"><div class="stakes-td-order"><%= index %></div></td>
+                    <td class="stakes-td">
+                        <%=
+                            tooltip = if metadata["is_validator"], do: "This is a validator", else: false
+                            render BlockScoutWeb.StakesView,
+                            "_stakes_address.html",
+                            address: binary_part(to_string(pool.address_hash), 0, 13),
+                            tooltip: tooltip,
+                            index: index
+                        %>
+                    </td>
+                    <td class="stakes-td">
+                        <%=
+                            render BlockScoutWeb.CommonComponentsView,
+                            "_progress_from_to.html",
+                            from: metadata["self_staked_amount"],
+                            to: metadata["staked_amount"],
+                            progress: amount_ratio(metadata)
+                        %>
+                    </td>
+                    <td class="stakes-td"><%= metadata["staked_ratio"] %></td>
+                    <td class="stakes-td"><span class="stakes-td-link-style"><%= metadata["delegators_count"] %></span></td>
+                    <%= if metadata["is_banned"] do %>
+                    <td class="stakes-td">
+                        <span class="stakes-td-banned-info">
+                            Banned until block #<%= metadata["banned_until"] %> (<%= estimated_unban_day(metadata["banned_until"], @average_block_time) %>)
+                        </span>
+                    </td>
+                    <% else %>
+                    <td class="stakes-td">
+                        <div class="stakes-controls">
+                            <%= render BlockScoutWeb.StakesView, "_stakes_control_move.html", extra_class: "js-move-stake" %>
+                            <%= render BlockScoutWeb.StakesView, "_stakes_control_withdraw.html", extra_class: "js-withdraw-stake" %>
+                            <%= render BlockScoutWeb.StakesView, "_stakes_control_stake.html", extra_class: "js-stake-stake" %>
+                        </div>
+                    </td>
+                    <% end %>
+                </tr>
+                <%= render BlockScoutWeb.StakesView, "_stakes_modal_validator_info.html", validator: pool, index: index, average_block_time: @average_block_time %>
+                <% end %>
             <% end %>
         </tbody>
     </table>
 </div>
-<%= render BlockScoutWeb.StakesView, "_stakes_modal_validator_info.html" %>
 <%= render BlockScoutWeb.StakesView, "_stakes_modal_stake.html" %>
 <%= render BlockScoutWeb.StakesView, "_stakes_modal_withdraw.html" %>
 <%=
