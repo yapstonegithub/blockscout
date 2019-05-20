@@ -1,0 +1,27 @@
+<%= 
+  render BlockScoutWeb.StakesView,
+  "_stakes_top.html",
+  conn: @conn,
+  epoch_number: @epoch_number,
+  epoch_end_in: @epoch_end_in,
+  block_number: @block_number,
+  logged_in: false
+%>
+<section class="container">
+  <div class="card">
+    <%= render BlockScoutWeb.StakesView, "_stakes_tabs.html", conn: @conn %>
+    <%= 
+      render BlockScoutWeb.StakesView,
+      "_stakes_title.html",
+      title: list_title(@pools_type),
+      show_banned_checkbox: @pools_type == :inactive
+    %>
+    <%= 
+      render BlockScoutWeb.PoolsView, 
+      "_table.html",
+      pools: @pools,
+      pools_type: @pools_type,
+      average_block_time: @average_block_time
+    %>
+  </div>
+</section>

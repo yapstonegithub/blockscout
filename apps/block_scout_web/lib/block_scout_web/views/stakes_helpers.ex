@@ -19,4 +19,8 @@ defmodule BlockScoutWeb.StakesHelpers do
         |> Timex.format!("%d %b %Y", :strftime)
     end
   end
+
+  def list_title(:validator), do: "Validators"
+  def list_title(:active), do: "Active Pools"
+  def list_title(:inactive), do: "Inactive Pools"
 end
