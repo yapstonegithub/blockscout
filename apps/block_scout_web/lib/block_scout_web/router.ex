@@ -152,6 +152,13 @@ defmodule BlockScoutWeb.Router do
       )
 
       resources(
+        "/logs",
+        AddressLogsController,
+        only: [:index],
+        as: :logs
+      )
+
+      resources(
         "/contract_verifications",
         AddressContractVerificationController,
         only: [:new, :create],
