@@ -59,27 +59,27 @@
                 </span>
               <% else %>
                 <div class="stakes-controls">
-                  <%= render BlockScoutWeb.StakesView, "_stakes_control_move.html", extra_class: "js-move-stake" %>
-                  <%= render BlockScoutWeb.StakesView, "_stakes_control_withdraw.html", extra_class: "js-withdraw-stake" %>
-                  <%= render BlockScoutWeb.StakesView, "_stakes_control_stake.html", extra_class: "js-stake-stake" %>
+                  <%= render BlockScoutWeb.StakesView, "_stakes_control_move.html", extra_class: "js-move-stake", index: index %>
+                  <%= render BlockScoutWeb.StakesView, "_stakes_control_withdraw.html", extra_class: "js-withdraw-stake", index: index%>
+                  <%= render BlockScoutWeb.StakesView, "_stakes_control_stake.html", extra_class: "js-stake-stake", index: index %>
                 </div>
               <% end %>
             </td>
           </tr>
           <%= 
-            render BlockScoutWeb.StakesView, 
-            "_stakes_modal_validator_info.html", 
-            validator: pool, 
-            index: index, 
-            average_block_time: @average_block_time 
+            render BlockScoutWeb.StakesView,
+            "_stakes_modal_validator_info.html",
+            validator: pool,
+            index: index,
+            average_block_time: @average_block_time
           %>
+          <%= render BlockScoutWeb.StakesView, "_stakes_modal_stake.html", pool: pool, index: index %>
+          <%= render BlockScoutWeb.StakesView, "_stakes_modal_withdraw.html", pool: pool, index: index %>
         <% end %>
       <% end %>
     </tbody>
   </table>
 </div>
-<%= render BlockScoutWeb.StakesView, "_stakes_modal_stake.html" %>
-<%= render BlockScoutWeb.StakesView, "_stakes_modal_withdraw.html" %>
 <%=
   render BlockScoutWeb.CommonComponentsView,
   "_modal_status.html",

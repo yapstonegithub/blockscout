@@ -1,4 +1,4 @@
-<div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="withdrawModal<%= @index %>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-stake" role="document">
     <div class="modal-content">
       <%= render BlockScoutWeb.CommonComponentsView, "_modal_close_button.html" %>
@@ -29,11 +29,7 @@
           <%=
             render BlockScoutWeb.StakesView,
             "_stakes_progress.html",
-            progress: "1250",
-            total: "3000",
-            pool: "0x7130-95a480",
-            stakes_ratio: "1.095%",
-            delegators: "3200"
+            pool: @pool
           %>
         </div>
       </div>

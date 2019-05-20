@@ -7,7 +7,7 @@ $(function () {
   })
 
   $('.js-validator-info-modal').on('click', function (e) {
-    var id = e.target.id.split("_")[1];
+    var id = e.currentTarget.id.split("_")[1];
     $('#validatorInfoModal' + id).modal()
   })
 
@@ -23,8 +23,9 @@ $(function () {
     $('#successStatusModal').modal()
   })
 
-  $('.js-stake-stake').on('click', function () {
-    const modal = '#stakeModal'
+  $('.js-stake-stake').on('click', function (e) {
+    var id = e.currentTarget.id.split("_")[1];
+    const modal = '#stakeModal' + id;
     const progress = parseInt($(`${modal} .js-stakes-progress-data-progress`).text())
     const total = parseInt($(`${modal} .js-stakes-progress-data-total`).text())
 
@@ -33,8 +34,9 @@ $(function () {
     setupStakesProgress(progress, total, modal)
   })
 
-  $('.js-withdraw-stake').on('click', function () {
-    const modal = '#withdrawModal'
+  $('.js-withdraw-stake').on('click', function (e) {
+    var id = e.currentTarget.id.split("_")[1];
+    const modal = '#withdrawModal' + id;
     const progress = parseInt($(`${modal} .js-stakes-progress-data-progress`).text())
     const total = parseInt($(`${modal} .js-stakes-progress-data-total`).text())
 
