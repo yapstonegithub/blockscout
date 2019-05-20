@@ -2809,7 +2809,7 @@ defmodule Explorer.Chain do
         address in Address,
         where: address.contract_code != <<>>,
         where: not is_nil(address.contract_code),
-        where: fragment("? IS TRUE", address.decompiled),
+        where: address.decompiled == true,
         limit: ^limit,
         offset: ^offset,
         order_by: [asc: address.inserted_at],

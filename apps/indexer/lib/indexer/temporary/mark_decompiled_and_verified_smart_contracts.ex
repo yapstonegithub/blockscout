@@ -21,7 +21,7 @@ defmodule Indexer.Temporary.MarkDecompiledAndVerifiedSmartContracts do
     max_batch_size: 100,
     max_concurrency: 1,
     task_supervisor: Indexer.Temporary.MarkDecompiledAndVerifiedSmartContracts.TaskSupervisor,
-    metadata: [fetcher: :uncles_without_index]
+    metadata: [fetcher: :mark_decompiled_and_verified_smart_contracts]
   ]
 
   @doc false
